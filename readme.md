@@ -5,3 +5,4 @@
 
 ## Ссылки
 - [Публичная страница на GitHub Pages](https://Plovika.github.io/progTIP/)
+- https://plovika.github.io/progTIP/
