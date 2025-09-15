@@ -3,7 +3,7 @@
 html, body { margin: 0; padding: 0; }
 body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial,
 sans-serif; line-height: 1.5; }
-/* Формы: размеры, отступы, визуальный порядок */
+/* Формы:  размеры, отступы, визуальный порядок */
 label { display: block; margin: 0.5rem 0 0.25rem; }
 input, select, textarea, button {
     width: 100%;

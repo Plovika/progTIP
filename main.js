@@ -25,7 +25,7 @@ form?.addEventListener('submit', (e) => {
 // Пример: таргетированное сообщение
         const email = form.elements.email;
         if (email?.validity.typeMismatch) {
-            email.setCustomValidity('Введите корректный e-mail, например name@example.com');
+            email.setCustomValidity('Введите  корректный e-mail, например name@example.com');
         }
         form.reportValidity(); // показать браузерные подсказки
 // A11y: подсветка проблемных полей
