@@ -182,3 +182,7 @@ h1{
 .current_page{
     color: green;
 }
+
+#contactDialog {
+    margin: auto;
+}
