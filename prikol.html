@@ -30,20 +30,21 @@
 <body>
 <!--шапка сайта(логотип, навигация и др инфа,
  общая для всех страниц)-->
-<header>
+<header class = "site-header">
     <!--ссылка ведущая на главную стр-->
-    <a href = "/">Катюшкин сайт</a>
+    <a class = "site-header__brand" href = "/">Катюшкин сайт</a>
     <!--навигация, nav - основная навигация-->
-    <nav>
+    <nav class = "site-nav" aria-label="основная навигация">
         <!--тег ненумерованного списка(unordered list)-->
-        <ul>
+        <ul class = "site-nav__list">
             <!--List item(li) - элемент списка:
             внутри: ссылка(<a>) на страницу
-            index.html c анкором "главная"-->
-            <li><a href="index.html">Вернуться на главную</a></li>
-            <li><a href="contacts.html">Контакты</a></li>
-            <li><a href="about.html">О нас</a></li>
-            <li><a href="pricol.html">Видосики</a></li>
+            index.html c анкором "главная" а последнее - это якорь -->
+            <li class = "site-nav__item" ><a class = "site-nav__link" href="index.html" >Вернуться на главную</a></li>
+            <li class = "site-nav__item" ><a class = "site-nav__link" href="contacts.html" >Контакты</a></li>
+            <li class = "site-nav__item" ><a class = "site-nav__link" href="about.html" >О нас</a></li>
+            <li class = "site-nav__item" ><a class = "site-nav__link" href="prikol.html" >Видео</a></li>
+            <li class="site-nav__item"><a class="site-nav__link site-nav__link--cta" href="#contacts">Связаться</a></li>
         </ul>
     </nav>
 </header>
@@ -54,38 +55,46 @@
     <nav aria-label="хлебные крошки">
         <!--ссылка на главную страницу
          и стрелка для визуализации-->
-        <a href="index.html">Главная</a> ->
+        <a class = "croshki" href="index.html">Главная</a> ->
         <!--тег для текстового контейнера
         (здесь исп для обозначения страницы
          в цепочке хлебных крошек)-->
-        <span>Видосики</span>
+        <span>Видео</span>
     </nav>
     <!--заголовок первого уровня
     (ЕДИНСТВЕННЫЙ НА СТРАНИЦЕ)-->
-    <h1>Видосики</h1>
+    <h1>Видео</h1>
     <!--тег секции(раздела)
-    группирует логически связанный контент-->
-    <section>
+    группирует логически связанный контент(секция 1 с якорем, id
+     и есть якоря)-->
+    <section id = "video">
         <!--заголовок 2 уровня-->
-        <h2> Мои видосики </h2>
+        <h2> Мои видео </h2>
         <!--абзац текста p - paragraph-->
-        <p> Они крутые... </p>
+        <p> Текст... </p>
 
 
 
     </section>
     <section>
         <!--заголовок 2 уровня-->
-        <h2> Наша команда </h2>
+        <div > <h2> Наша команда </h2> </div>
         <!--абзац текста p - paragraph-->
         <p> Кот Барс и я </p>
-        <p>блаблабла</p>
+        <p>Хорошая компания</p>
+    </section>
+    <section id = "contacts">
+        <!--заголовок 2 уровня-->
+        <div > <h2> Контакты </h2> </div>
+        <!--абзац текста p - paragraph-->
+        <p> Контактов все равно не даем! </p>
+        <h2> :)</h2>
     </section>
     <!--кнопка открытия модалки id = "openDialog"
     уникально идентифицирует этот элемент для стилизации и джава
-    скрипт  type="button" явно указывает, что это кнопка
+    скрипт type="button" явно указывает, что это кнопка
     (по умолчанию кнопка внутри формы имеет тип submit-->
-    <button id = "openDialog" type="button">тык</button>
+    <button id = "openDialog" type="button"> Написать нам</button>
     <!--Семантический тег <dialog> для создания модального окна.
      Атрибут aria-labelledby="dialogTitle" связывает диалог с его
       заголовком (<h2 id="dialogTitle">...),
@@ -101,51 +110,51 @@
           novalidate отключает встроенную
            браузерную валидацию полей, чтобы ее
         можно было реализовать на JavaScript.-->
-        <form id = "contactForm" method = "dialog" novalidate>
+        <form class = "form" id = "contactForm" method = "dialog" novalidate>
             <!--Тег подписи к полю ввода.
              Атрибут for="name" связывает эту подпись с полем,
              у которого id="name". При клике на подпись
              курсор фокусируется на связанном поле.-->
-            <label for="name">Имя</label>
+            <label class="form__label" for="name">Имя</label>
             <!-- required — обязательное для заполнения.
              minlength="2" — минимальная длина 2 символа.
              autocomplete="given-name" — подсказывает браузеру,
             что это поле для имени, и он может предложить
              его автозаполнение.-->
-            <input id = "name" name = "name" type = "text"
+            <input class="form__input" id = "name" name = "name" type = "text" placeholder="Иванов Иван Петрович"
                    required minlength = "2" autocomplete="given-name">
-            <label for="email">E-mail</label>
+            <label class="form__label" for="email">E-mail</label>
             <!--type="email" включает
             базовую проверку формата email на стороне браузера.-->
-            <input id="email" name="email" type="email" placeholder="t@mail.com"
+            <input class="form__input" id="email" name="email" type="email" placeholder="t@mail.com"
                    required autocomplete="email">
-            <label for = "phone" >телефончик</label>
+            <label class="form__label" for = "phone" >Телефон</label>
             <!--type="tel" — оптимизирует ввод для телефонов.
              inputmode="tel" — на мобильных устройствах показывает
               цифровую клавиатуру. pattern="..." — задает регулярное
                выражение для проверки формата номера.
                 aria-describedby="phoneHelp" — связывает поле с подсказкой
              (<small id="phoneHelp">), чтобы скринридеры зачитали -->
-            <input id = "phone" name = "phone" type = "tel"
+            <input class="form__input" id = "phone" name = "phone" type = "tel"
                    inputmode="tel" autocomplete="tel"
                    aria-describedby="phoneHelp"
                    placeholder="+7 (___) ___-__-__"
                    required pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$">
             <small id="phoneHelp">Формат: +7 (900) 000-00-00</small>
-            <label for="date">Дата йоу</label>
-            <input id="date" name="date" type="date">
-            <label for="topic">Тема</label>
+            <label class="form__label"  for="date">Дата</label>
+            <input class="form__input" id="date" name="date" type="date">
+            <label class="form__label" for="topic">Тема</label>
             <!--Раскрывающийся список (селект).-->
-            <select id="topic" name="topic" required>
+            <select class="sel" id="topic" name="topic" required>
                 <!--Другие варианты выбора. Если атрибут value не указан,
                 значением будет текст внутри тега ("Вопрос", "Заказ").-->
-                <option value="">Выберите тему</option>
-                <option>Вопрос??</option>
-                <option>Заказ?!!</option>
+                <option value="sel__op">Выберите тему</option>
+                <option class = "sel__op" >Вопрос??</option>
+                <option class = "sel__op" >Заказ?!!</option>
             </select>
             <!--Многострочное текстовое поле.
              rows="4" задает начальную высоту в 4 строки.-->
-            <label for="message">Сообщение</label>
+            <label class="form__label" for="message">Сообщение</label>
 
             <textarea id="message" name="message"
                       rows="2" required></textarea>
@@ -161,6 +170,24 @@
             </form>
         </dialog>
 </main>
+<button class="theme-toggle" type="button" aria-pressed="false">Тема</button>
+<script defer>
+    const KEY='theme', btn=document.querySelector('.theme-toggle');
+    const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+    // Автовыбор: системная тема или сохранённый выбор пользователя
+    if(localStorage.getItem(KEY)==='dark' || (!localStorage.getItem(KEY) &&
+        prefersDark)){
+        document.body.classList.add('theme-dark');
+        btn?.setAttribute('aria-pressed','true');
+    }
+    // Переключение по кнопке с сохранением в localStorage
+    btn?.addEventListener('click', ()=>{
+        const isDark=document.body.classList.toggle('theme-dark');
+        btn.setAttribute('aria-pressed', String(isDark));
+        localStorage.setItem(KEY, isDark ? 'dark' : 'light');
+    });
+</script>
+
 <!--подвалище(авторские права, контакты и навигация)-->
 <footer>
     <!--Абзац с копирайтом.
