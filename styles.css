@@ -82,7 +82,6 @@ html{ scroll-behavior:smooth; } /* Плавная прокрутка к #яко�
 }
 .site-nav__link:active {
     color: #61b000;
-
 }
 
 
@@ -178,4 +177,8 @@ h1{
 }
 .section__title{
     color: var(--color-primary);
+}
+
+.current_page{
+    color: green;
 }
