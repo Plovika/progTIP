@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас - Катюшкин сайт</title>
+    <meta name="description" content="О нас моего сайта">
+    <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class = "site-header">
+    <a  class = "site-header__brand" href="/">Катюшкин сайт</a>
+    <!-- Главное меню навигации -->
+    <nav>
+        <ul>
+            <li class = "site-nav__item" ><a class = "site-nav__link" href="index.html" >Вернуться на главную</a></li>
+            <li class = "site-nav__item" ><a class = "site-nav__link" href="contacts.html" >Контакты</a></li>
+            <li class = "site-nav__item" ><a class = "current_page" href="about.html" >О нас</a></li>
+            <li class = "site-nav__item" ><a class = "site-nav__link" href="prikol.html" >Видео</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <!-- Простые "хлебные крошки" -->
+    <nav aria-label="Хлебные крошки">
+        <a class = "croshki" href="index.html">Главная</a> →
+        <span>О нас</span>
+    </nav>
+
+    <h1>О нашей компании</h1>
+    <section>
+        <h2>Наша история</h2>
+        <p>Текст о том, как все начиналось...</p>
+    </section>
+    <section>
+        <h2>Наша команда</h2>
+        <p>Текст о команде...</p>
+    </section>
+    <!--кнопка открытия модалки id = "openDialog"
+     уникально идентифицирует этот элемент для стилизации и джава
+     скрипт type="button" явно указывает, что это кнопка
+     (по умолчанию кнопка внутри формы имеет тип submit-->
+    <button id = "openDialog" type="button"> Написать нам</button>
+    <!--Семантический тег <dialog> для создания модального окна.
+     Атрибут aria-labelledby="dialogTitle" связывает диалог с его
+      заголовком (<h2 id="dialogTitle">...),
+     что помогает скринридерам понять, о чем это окно.-->
+    <dialog id = "contactDialog" aria-labelledby="dialogTitle" >
+        <!--Заголовок для модального окна с id,
+        на который ссылается aria-labelledby-->
+        <h2 id="dialogTitle"> Обратная связь</h2>
+        <!--Тег формы. method="dialog"
+        указывает, что при отправке формы должно
+         закрываться модальное окно
+          (альтернатива get/post).
+          novalidate отключает встроенную
+           браузерную валидацию полей, чтобы ее
+        можно было реализовать на JavaScript.-->
+        <form class = "form" id = "contactForm" method = "dialog" novalidate>
+            <!--Тег подписи к полю ввода.
+             Атрибут for="name" связывает эту подпись с полем,
+             у которого id="name". При клике на подпись
+             курсор фокусируется на связанном поле.-->
+            <label class="form__label" for="name">Имя</label>
+            <!-- required — обязательное для заполнения.
+             minlength="2" — минимальная длина 2 символа.
+             autocomplete="given-name" — подсказывает браузеру,
+            что это поле для имени, и он может предложить
+             его автозаполнение.-->
+            <input class="form__input" id = "name" name = "name" type = "text" placeholder="Иванов Иван Петрович"
+                   required minlength = "2" autocomplete="given-name">
+            <label class="form__label" for="email">E-mail</label>
+            <!--type="email" включает
+            базовую проверку формата email на стороне браузера.-->
+            <input class="form__input" id="email" name="email" type="email" placeholder="t@mail.com"
+                   required autocomplete="email">
+            <label class="form__label" for = "phone" >Телефон</label>
+            <!--type="tel" — оптимизирует ввод для телефонов.
+             inputmode="tel" — на мобильных устройствах показывает
+              цифровую клавиатуру. pattern="..." — задает регулярное
+               выражение для проверки формата номера.
+                aria-describedby="phoneHelp" — связывает поле с подсказкой
+             (<small id="phoneHelp">), чтобы скринридеры зачитали -->
+            <input class="form__input" id = "phone" name = "phone" type = "tel"
+                   inputmode="tel" autocomplete="tel"
+                   aria-describedby="phoneHelp"
+                   placeholder="+7 (___) ___-__-__"
+                   required pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$">
+            <small id="phoneHelp">Формат: +7 (900) 000-00-00</small>
+            <label class="form__label"  for="date">Дата</label>
+            <input class="form__input" id="date" name="date" type="date">
+            <label class="form__label" for="topic">Тема</label>
+            <!--Раскрывающийся список (селект).-->
+            <select class="sel" id="topic" name="topic" required>
+                <!--Другие варианты выбора. Если атрибут value не указан,
+                значением будет текст внутри тега ("Вопрос", "Заказ").-->
+                <option value="sel__op">Выберите тему</option>
+                <option class = "sel__op" >Вопрос??</option>
+                <option class = "sel__op" >Заказ?!!</option>
+            </select>
+            <!--Многострочное текстовое поле.
+             rows="4" задает начальную высоту в 4 строки.-->
+            <label class="form__label" for="message">Сообщение</label>
+
+            <textarea id="message" name="message"
+                      rows="2" required></textarea>
+            <!--Универсальный блочный контейнер (div)
+             с классом form-actions для группировки кнопок.
+            Класс нужен для последующего применения стилей CSS.-->
+            <div class="form-actions">
+                <!--тип button предотвращает отправку-->
+                <button type="button" id="closeDialog">Закрыть</button>
+                <!--тип submit отправляет форму по умолчанию-->
+                <button type="submit">Отправить</button>
+            </div>
+        </form>
+    </dialog>
+</main>
+<button class="theme-toggle" type="button" aria-pressed="false">Тема</button>
+<script defer>
+    const KEY='theme', btn=document.querySelector('.theme-toggle');
+    const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+    // Автовыбор: системная тема или сохранённый выбор пользователя
+    if(localStorage.getItem(KEY)==='dark' || (!localStorage.getItem(KEY) &&
+        prefersDark)){
+        document.body.classList.add('theme-dark');
+        btn?.setAttribute('aria-pressed','true');
+    }
+    // Переключение по кнопке с сохранением в localStorage
+    btn?.addEventListener('click', ()=>{
+        const isDark=document.body.classList.toggle('theme-dark');
+        btn.setAttribute('aria-pressed', String(isDark));
+        localStorage.setItem(KEY, isDark ? 'dark' : 'light');
+    });
+</script>
+
+<footer>
+    <p>&copy; 2025 Катюшкин сайт. Все права защищены.</p>
+    <p>Телефон: +7 (123) 456-78-90</p>
+</footer>
+    <script src="main.js"></script>
+</body>
+</html>
